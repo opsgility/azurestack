@@ -318,7 +318,7 @@ Foreach ($Entry in $CSVData) {
 
     # Deploy a VM to test image
     Write-Host "Starting deployment of Ubuntu Server $vhdVersion"
-    $mainTemplateURI = "https://raw.githubusercontent.com/mattmcspirit/azurestack/master/utilities/UbuntuTester/UbuntuReleaseTest.json"
+    $mainTemplateURI = "https://raw.githubusercontent.com/opsgility/azurestack/master/utilities/UbuntuTester/UbuntuReleaseTest.json"
     $guid = ((New-Guid).ToString()).Substring(0, 6)
     $deploymentName = "DeployUbuntuTest$($vhdVersion)_$guid"
     $rg = "UbuntuServer$($ubuntuBuild)_$guid"

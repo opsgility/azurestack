@@ -289,8 +289,8 @@ elseif (($skipRP -eq $false) -and ($progressCheck -ne "Complete")) {
             if ($deploymentMode -eq "Online") {
                 if ($vmType -eq "AppServiceFS") {
                     Write-Host "Downloading the template required for the File Server"
-                    $mainTemplateURI = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/templates/FileServer/azuredeploy.json"
-                    $scriptBaseURI = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/templates/FileServer/scripts/"
+                    $mainTemplateURI = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/templates/FileServer/azuredeploy.json"
+                    $scriptBaseURI = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/templates/FileServer/scripts/"
                 }
                 else {
                     Write-Host "Getting the URIs for all AZPKG files for deployment of resources"
@@ -301,7 +301,7 @@ elseif (($skipRP -eq $false) -and ($progressCheck -ne "Complete")) {
                     $azureContext = Get-AzureRmSubscription -SubscriptionID $sub.SubscriptionId | Select-AzureRmSubscription
                     $azsLocation = (Get-AzureRmLocation).DisplayName
                     $mainTemplateURI = $(Get-AzsGalleryItem | Where-Object { $_.Name -like "AzureStackPOC.$azpkg*" }).DefinitionTemplates.DeploymentTemplateFileUris.Values | Where-Object { $_ -like "*mainTemplate.json" }
-                    $scriptBaseURI = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/scripts/"
+                    $scriptBaseURI = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/scripts/"
                 }
             }
             elseif (($deploymentMode -eq "PartialOnline") -or ($deploymentMode -eq "Offline")) {

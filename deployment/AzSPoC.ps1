@@ -778,7 +778,7 @@ try {
     # Validate Github branch exists - usually reserved for testing purposes
     if ($deploymentMode -eq "Online") {
         try {
-            $urlToTest = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/README.md"
+            $urlToTest = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/README.md"
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
             $statusCode = Invoke-WebRequest "$urlToTest" -UseBasicParsing -ErrorAction SilentlyContinue | ForEach-Object { $_.StatusCode } -ErrorAction SilentlyContinue
             if ($statusCode -eq 200) {
@@ -1827,7 +1827,7 @@ try {
             if ($deploymentMode -eq "Online") {
                 # If this is an online deployment, pull down the PowerShell scripts from GitHub
                 foreach ($script in $scriptArray) {
-                    $scriptBaseURI = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/powershell"
+                    $scriptBaseURI = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/powershell"
                     $scriptDownloadPath = "$scriptPath\$script"
                     DownloadWithRetry -downloadURI "$scriptBaseURI/$script" -downloadLocation $scriptDownloadPath -retries 10
                 }
@@ -3392,7 +3392,7 @@ C:\AzSPoC\AzSPoC.ps1, you should find the Scripts folder located at C:\AzSPoC\Sc
                             $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User") 
                             # Set up the VM alias Endpoint for Azure CLI & Python
                             if ($deploymentMode -eq "Online") {
-                                $vmAliasEndpoint = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/packages/Aliases/aliases.json"
+                                $vmAliasEndpoint = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/packages/Aliases/aliases.json"
                             }
                             elseif (($deploymentMode -eq "PartialOnline") -or ($deploymentMode -eq "Offline")) {
                                 $item = Get-ChildItem -Path "$azsPath\images" -Recurse -Include ("aliases.json") -ErrorAction Stop

@@ -121,7 +121,7 @@ try {
     if (!$branch) {
         $branch = "master"
     }
-    $urlToTest = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/README.md"
+    $urlToTest = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/README.md"
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     $statusCode = Invoke-WebRequest "$urlToTest" -UseBasicParsing -ErrorAction SilentlyContinue | ForEach-Object { $_.StatusCode } -ErrorAction SilentlyContinue
     if ($statusCode -eq 200) {
@@ -372,7 +372,7 @@ While (($tableSuccess -eq $false) -and ($tableRetries -le 10)) {
         $table.Columns.Add("Uri", "string") | Out-Null
 
         # AzSPoC.ps1 Script
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/AzSPoC.ps1"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/AzSPoC.ps1"
         $row.filename = "AzSPoC.ps1"; $row.path = "$downloadPath"; $row.productName = "Azure Stack POC Configurator Script"; $Table.Rows.Add($row)
         # SqlLocalDB MSI
         $row = $table.NewRow(); $row.Uri = "https://download.microsoft.com/download/E/F/2/EF23C21D-7860-4F05-88CE-39AA114B014B/SqlLocalDB.msi"
@@ -392,10 +392,10 @@ While (($tableSuccess -eq $false) -and ($tableRetries -le 10)) {
         $row = $table.NewRow(); $row.Uri = "https://github.com/mattmcspirit/azurestack/raw/$branch/deployment/packages/Ubuntu/Canonical.UbuntuServer1604LTS-ARM.1.0.0.azpkg"
         $row.filename = "Canonical.UbuntuServer1604LTS-ARM.1.0.0.azpkg"; $row.path = "$packagePath"; $row.productName = "Ubuntu Server Marketplace Package"; $Table.Rows.Add($row)
         # Convert-WindowsImage.ps1 Script
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/scripts/Convert-WindowsImage.ps1"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/scripts/Convert-WindowsImage.ps1"
         $row.filename = "Convert-WindowsImage.ps1"; $row.path = "$imagesPath"; $row.productName = "Convert-WindowsImage.ps1 VHD Creation Tool"; $Table.Rows.Add($row)
         # VM Endpoint Aliases Doc
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/packages/Aliases/aliases.json"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/packages/Aliases/aliases.json"
         $row.filename = "aliases.json"; $row.path = "$imagesPath"; $row.productName = "VM aliases endpoint doc"; $Table.Rows.Add($row)
         # Windows Server DC AZPKG
         $row = $table.NewRow(); $row.Uri = "https://github.com/mattmcspirit/azurestack/raw/$branch/deployment/packages/WindowsServer/Microsoft.WindowsServer2016Datacenter-ARM.1.0.0.azpkg"
@@ -430,10 +430,10 @@ While (($tableSuccess -eq $false) -and ($tableRetries -le 10)) {
         $row = $table.NewRow(); $row.Uri = "https://aka.ms/azurestacksqlrp11330"
         $row.filename = "SQLServer.zip"; $row.path = "$dbPath"; $row.productName = "SQL Server Resource Provider Files"; $Table.Rows.Add($row)
         # MySQL 5.7 Install Script
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/scripts/install_MySQL_Offline.sh"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/scripts/install_MySQL_Offline.sh"
         $row.filename = "install_MySQL.sh"; $row.path = "$scriptPath"; $row.productName = "MySQL install script"; $Table.Rows.Add($row)
         # MySQL 8 Install Script
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/scripts/install_MySQL8_Offline.sh"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/scripts/install_MySQL8_Offline.sh"
         $row.filename = "install_MySQL8.sh"; $row.path = "$scriptPath"; $row.productName = "MySQL 8 install script"; $Table.Rows.Add($row)
 
         ### Grab the MySQL Offline Binaries - used when Azure Stack system is deployed in a completely offline mode
@@ -563,7 +563,7 @@ While (($tableSuccess -eq $false) -and ($tableRetries -le 10)) {
         $row.filename = "mysql8-server.deb"; $row.path = "$binaryPath"; $row.productName = "MySQL 8 server dependency"; $Table.Rows.Add($row)
 
         # SQL Server Install Script
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/scripts/install_MSSQL_Offline.sh"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/scripts/install_MSSQL_Offline.sh"
         $row.filename = "install_MSSQL.sh"; $row.path = "$scriptPath"; $row.productName = "SQL Server Install Script"; $Table.Rows.Add($row)
 
         ### Grab the SQL Server 2017 for Ubuntu Offline Binaries - used when Azure Stack POC system is deployed in a completely offline mode
@@ -632,16 +632,16 @@ While (($tableSuccess -eq $false) -and ($tableRetries -le 10)) {
         $row.filename = "mssql-libsasl2.deb"; $row.path = "$binaryPath"; $row.productName = "SQL Server 2017 libsasl2 dependency"; $Table.Rows.Add($row)
 
         # Add MySQL Hosting Server Template
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/templates/MySQLHosting/azuredeploy.json"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/templates/MySQLHosting/azuredeploy.json"
         $row.filename = "mySqlHostingTemplate.json"; $row.path = "$templatePath"; $row.productName = "Add MySQL Hosting Server template for deployment"; $Table.Rows.Add($row)
         # Add SQL Hosting Server Template
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/templates/SQLHosting/azuredeploy.json"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/templates/SQLHosting/azuredeploy.json"
         $row.filename = "sqlHostingTemplate.json"; $row.path = "$templatePath"; $row.productName = "Add SQL Server Hosting Server template for deployment"; $Table.Rows.Add($row)
         # File Server Template
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/templates/FileServer/azuredeploy.json"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/templates/FileServer/azuredeploy.json"
         $row.filename = "FileServerTemplate.json"; $row.path = "$templatePath"; $row.productName = "File Server template for deployment"; $Table.Rows.Add($row)
         # File Server PowerShell Script
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/templates/FileServer/scripts/ConfigureFileServer.ps1"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/templates/FileServer/scripts/ConfigureFileServer.ps1"
         $row.filename = "ConfigureFileServer.ps1"; $row.path = "$scriptPath"; $row.productName = "File Server script for deployment"; $Table.Rows.Add($row)
         # App Service Helper Scripts
         $row = $table.NewRow(); $row.Uri = "https://aka.ms/appsvconmashelpers"
@@ -652,10 +652,10 @@ While (($tableSuccess -eq $false) -and ($tableRetries -le 10)) {
         #$row = $table.NewRow(); $row.Uri = "https://github.com/mattmcspirit/azurestack/raw/$branch/deployment/appservice/appservice1.4.exe"
         $row.filename = "appservice.exe"; $row.path = "$appServicePath"; $row.productName = "App Service installer"; $Table.Rows.Add($row)
         # App Service PreDeployment JSON
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/appservice/AppServiceDeploymentSettings.json"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/appservice/AppServiceDeploymentSettings.json"
         $row.filename = "AppSvcPre.json"; $row.path = "$appServicePath"; $row.productName = "App Service Pre-Deployment JSON Configuration"; $Table.Rows.Add($row)
         # App Service Custom Script Extension
-        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/appservice/extension/CSE.zip"
+        $row = $table.NewRow(); $row.Uri = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/appservice/extension/CSE.zip"
         $row.filename = "CSE.zip"; $row.path = "$extensionPath"; $row.productName = "App Service Custom Script Extension"; $Table.Rows.Add($row)
     
         # Grab the MSI/Exe packages to be installed
@@ -808,7 +808,7 @@ catch {
 $scriptStep = "POWERSHELLSCRIPTS"
 try {
     Write-CustomVerbose -Message "Downloading PowerShell scripts used for deployment" -ErrorAction Stop
-    $scriptBaseURI = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/powershell"
+    $scriptBaseURI = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/powershell"
     $scriptArray = @()
     $scriptArray.Clear()
     $scriptArray = "AddAppServicePreReqs.ps1", "AddDBHosting.ps1", "AddDBSkuQuota.ps1", "AddGalleryItems.ps1", "AddImage.ps1", "AddVMExtensions.ps1", `

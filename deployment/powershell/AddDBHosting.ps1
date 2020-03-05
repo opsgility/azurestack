@@ -189,7 +189,7 @@ elseif (($skipRP -eq $false) -and ($progressCheck -ne "Complete")) {
             # Add host server to MySQL RP
             Write-Host "Attaching $dbHost hosting server to $dbHost resource provider"
             if ($deploymentMode -eq "Online") {
-                $templateURI = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/templates/$hostingPath/azuredeploy.json"
+                $templateURI = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/templates/$hostingPath/azuredeploy.json"
             }
             elseif (($deploymentMode -eq "PartialOnline") -or ($deploymentMode -eq "Offline")) {
                 $templateURI = Get-ChildItem -Path "$azsPath\templates" -Recurse -Include "$hostingTemplate" | ForEach-Object { $_.FullName }

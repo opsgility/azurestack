@@ -617,7 +617,7 @@ elseif ((!$skip2019Images) -and ($progressCheck -ne "Complete")) {
                             # Split for Windows Server Images
                             if ($deploymentMode -eq "Online") {
                                 # Download Convert-WindowsImage.ps1
-                                $convertWindowsURI = "https://raw.githubusercontent.com/mattmcspirit/azurestack/$branch/deployment/scripts/Convert-WindowsImage.ps1"
+                                $convertWindowsURI = "https://raw.githubusercontent.com/opsgility/azurestack/$branch/deployment/scripts/Convert-WindowsImage.ps1"
                                 $convertWindowsDownloadLocation = "$azsPath\images\$image\Convert-Windows$($imageType)Image.ps1"
                                 $convertWindowsImageExists = [System.IO.File]::Exists("$azsPath\images\$image\Convert-Windows$($imageType)Image.ps1")
                                 if ($convertWindowsImageExists -eq $false) {
